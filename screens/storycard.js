@@ -11,7 +11,6 @@ import {
     Dimensions,
     TouchableOpacity,
 } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import { RFValue } from 'react-native-responsive-fontsize';
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
@@ -70,12 +69,12 @@ export default class StoryCard extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
     },
     cardContainer: {
-        margin: RFValue(13),
+        margin: RFValue(53),
         backgroundColor: "#eb4034",
-        borderRadius: RFValue(20)
+        borderRadius: RFValue(15),
     },
     storyImage: {
         resizeMode: "contain",
@@ -84,28 +83,26 @@ const styles = StyleSheet.create({
         height: RFValue(250)
     },
     titleContainer: {
-        paddingLeft: RFValue(20),
-        justifyContent: "center"
+        padding:100,
     },
     storyTitleText: {
         fontSize: RFValue(25),
-        fontFamily: "Bubblegum-Sans",
+        fontFamily: "makan-hati",
         color: "white"
     },
     storyAuthorText: {
         fontSize: RFValue(18),
-        fontFamily: "Bubblegum-Sans",
+        fontFamily: "makan-hati",
         color: "white"
     },
     descriptionText: {
-        fontFamily: "Bubblegum-Sans",
+        fontFamily: "makan-hati",
         fontSize: 13,
         color: "white",
         paddingTop: RFValue(10)
     },
     actionContainer: {
         justifyContent: "center",
-        alignItems: "center",
         padding: RFValue(10)
     },
 })

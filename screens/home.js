@@ -7,10 +7,10 @@ import {
     SafeAreaView,
     Platform,
     StatusBar,
-    Image
+    Image,
+    FlatList
 } from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
-import { FlatList } from "react-native-gesture-handler";
 import * as Font from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import StoryCard from "./storycard";
@@ -98,6 +98,8 @@ const styles = StyleSheet.create({
         color: "white",
         fontSize: RFValue(38),
         fontFamily: 'makan-hati',
+        marginLeft:150,
+        paddingBottom:200
     },
     cardContainer: {
         flex: 0.85
