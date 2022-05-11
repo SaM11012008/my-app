@@ -16,7 +16,7 @@ import * as Font from "expo-font";
 import Logout from './logout'
 
 let fonts = {
-    'makan-hati': require('../assets/fonts/WaukeganLdoBold-ZVeK.ttf')
+    'custom-font': require('../assets/fonts/WaukeganLdoBold-ZVeK.ttf')
 }
 
 
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 50,
-        fontFamily: 'makan-hati',
+        fontFamily: 'custom-font',
         color: 'white'
     }
 });

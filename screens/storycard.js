@@ -16,7 +16,7 @@ import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
 
 let fonts = {
-    'makan-hati': require('../assets/fonts/WaukeganLdoBold-ZVeK.ttf')
+    'custom-font': require('../assets/fonts/WaukeganLdoBold-ZVeK.ttf')
 }
 
 export default class StoryCard extends Component {
@@ -87,16 +87,16 @@ const styles = StyleSheet.create({
     },
     storyTitleText: {
         fontSize: RFValue(25),
-        fontFamily: "makan-hati",
+        fontFamily: "custom-font",
         color: "white"
     },
     storyAuthorText: {
         fontSize: RFValue(18),
-        fontFamily: "makan-hati",
+        fontFamily: "custom-font",
         color: "white"
     },
     descriptionText: {
-        fontFamily: "makan-hati",
+        fontFamily: "custom-font",
         fontSize: 13,
         color: "white",
         paddingTop: RFValue(10)

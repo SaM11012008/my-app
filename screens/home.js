@@ -16,7 +16,7 @@ import AppLoading from 'expo-app-loading';
 import StoryCard from "./storycard";
 
 let fonts = {
-    'makan-hati': require('../assets/fonts/WaukeganLdoBold-ZVeK.ttf')
+    'custom-font': require('../assets/fonts/WaukeganLdoBold-ZVeK.ttf')
 }
 
 let stories = require("./stories.json")
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     appTitleText: {
         color: "white",
         fontSize: RFValue(38),
-        fontFamily: 'makan-hati',
+        fontFamily: 'custom-font',
         marginLeft:150,
         paddingBottom:200
     },

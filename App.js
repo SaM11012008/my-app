@@ -1,20 +1,32 @@
-import { NavigationContainer } from '@react-navigation/native';
 import * as React from 'react';
-import { StyleSheet, Text, View } from "react-native";
-import BottomTabNavigator from './navigation/tabnavigator';
-import * as firebase from 'firebase';
+import { createSwitchNavigator, createAppContainer } from "react-navigation";
+
+import Login from './screens/login';
+import DashboardScreen from './screens/dashboard';
+import LoadingScreen from './screens/loading';
+
+import firebase from 'firebase';
 import { firebaseConfig } from './config';
 
-/*if (!firebase.apps.length) {
+if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 } else {
   firebase.app()
-}*/
+}
+
+const AppSwitchNavigator = createSwitchNavigator({
+  LoadingScreen: LoadingScreen,
+  Login: Login,
+  DashboardScreen: DashboardScreen
+});
+
+const AppNavigator = createAppContainer(AppSwitchNavigator);
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <BottomTabNavigator />
-    </NavigationContainer>
+    // <NavigationContainer>
+    //    <BottomTabNavigator />
+    //  </NavigationContainer>
+    <AppNavigator />
   )
 }

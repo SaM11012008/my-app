@@ -4,7 +4,7 @@ import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 
 let fonts = {
-  'makan-hati': require('../assets/fonts/WaukeganLdoBold-ZVeK.ttf')
+  'custom-font': require('../assets/fonts/WaukeganLdoBold-ZVeK.ttf')
 }
 
 export default class Logout extends Component {
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     
   },
   text: {
-    fontFamily:'makan-hati',
+    fontFamily:'custom-font',
     fontSize:50,
     color:'white'
   }
