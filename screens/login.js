@@ -8,8 +8,10 @@ import {
   StatusBar,
   Image,
   Dimensions,
+  TouchableOpacity,
+  ImageBackground,
+  TextInput
 } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { RFValue } from 'react-native-responsive-fontsize';
 
 import * as Google from 'expo-google-app-auth';
@@ -18,16 +20,28 @@ import firebase from 'firebase';
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
 
+import Home from './home'
+
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
+import bgImg from '../assets/bg8.jpg'
+
 let fonts = {
   'custom-font': require('../assets/fonts/WaukeganLdoBold-ZVeK.ttf')
 }
+
+const { width: WIDTH } = Dimensions.get('window')
 
 export default class Login extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      fontsLoaded: false
+      fontsLoaded: false,
+      showPass: true,
+      press: false,
+      email: '',
+      password: ''
     }
   }
 
@@ -39,6 +53,15 @@ export default class Login extends Component {
     await Font.loadAsync(fonts);
     this.setState({ fontsLoaded: true });
   }
+
+  /*  handleLogin = (email, password) => {
+      firebase.auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(() => {
+          this.props.navigation.navigate("Home")
+        })
+        .catch(e => { alert(e.message) })
+    }*/
 
   isUserEqual = (googleUser, firebaseUser) => {
     if (firebaseUser) {
@@ -123,74 +146,176 @@ export default class Login extends Component {
     }
   };
 
+  showPass = () => {
+    if (this.state.press == false) {
+      this.setState({ showPass: false, press: true })
+    } else {
+      this.setState({ showPass: true, press: false })
+    }
+  }
+
   render() {
     if (!this.state.fontsLoaded) {
       return <AppLoading />;
     } else {
       return (
-        < View style={styles.container} >
+        <ImageBackground source={bgImg} style={styles.bgContainer} >
+
           <SafeAreaView style={styles.droidSafeArea} />
-          <View style={styles.appTitle}>
-            <Text style={styles.appTitleText}>{`My App`}</Text>
+
+          <View style={styles.logoContainer}>
+            <Image style={styles.logo} />
+            <Text style={styles.logoText}> MY APP </Text>
           </View>
+
+          <View style={styles.inputContainer}>
+            <Ionicons
+              name='person-outline'
+              size={28}
+              color='rgba(255,255,255,0.7)'
+              style={styles.inputIcon}
+            />
+            <TextInput
+              style={styles.input}
+              placeholder={'Username'}
+              placeholderTextColor={'rgba(255,255,255,0.7)'}
+              underlineColorAndroid='transparent'
+              autoCapitalize='none'
+              autoCorrect={false}
+            />
+          </View>
+
+          <View style={styles.inputContainer}>
+            <Ionicons
+              name='lock-closed-outline'
+              size={28}
+              color='rgba(255,255,255,0.7)'
+              style={styles.inputIcon}
+            />
+            <TextInput
+              style={styles.input}
+              placeholder={'Password'}
+              secureTextEntry={true}
+              placeholderTextColor={'rgba(255,255,255,0.7)'}
+              underlineColorAndroid='transparent'
+              autoCapitalize='none'
+              autoCorrect={false}
+              keyboardType="email-address"
+            />
+            <TouchableOpacity style={styles.btnEye}
+              onPress={this.showPass.bind(this)}>
+              <Ionicons
+                name={this.state.press == false ? 'eye-off-outline' : 'eye-outline'}
+                size={26}
+                color={'rgba(255,255,255,0.7)'}
+              />
+            </TouchableOpacity>
+          </View>
+
+          {/*<TouchableOpacity style={styles.btnLogin}
+           // onPress={() => this.handleLogin(this.state.email, this.state.password)}>
+            <Text style={styles.btnText}> LOGIN </Text>
+      </TouchableOpacity>*/}
+
+
           <View style={styles.buttonContainer}>
             <TouchableOpacity
               style={styles.button}
               onPress={() => this.signInWithGoogleAsync()}>
+
               <Image
                 source={require('../assets/google_icon.png')}
                 style={styles.googleIcon}></Image>
-              <Text style={styles.googleText}>Sign in with Google</Text>
+
             </TouchableOpacity>
           </View>
-        </View >
+        </ImageBackground >
       );
     }
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
+  bgContainer: {
     flex: 1,
-    backgroundColor: '#32a86d',
+    width: null,
+    height: null,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
+  logoContainer: {
+    alignItems: 'center',
+    marginBottom: 50
+  },
+  logo: {
+    width: 120,
+    height: 120
+  },
+  logoText: {
+    color: '#E8C360',
+    fontSize: 50,
+    fontWeight: '500',
+    fontFamily: 'custom-font',
+    marginTop: 10,
+  },
+  inputContainer: {
+    marginTop: 10
+  },
+  input: {
+    width: WIDTH - 55,
+    height: 45,
+    borderRadius: 25,
+    fontSize: 16,
+    fontFamily: 'custom-font',
+    paddingLeft: 45,
+    backgroundColor: 'rgba(0,0,0,0.35)',
+    color: 'rgba(255,255,255,0.7)',
+    marginHorizontal: 25
+  },
+  inputIcon: {
+    position: 'absolute',
+    top: 8,
+    left: 37
+  },
+  btnEye: {
+    position: 'absolute',
+    top: 8,
+    right: 37
+  },
+  btnLogin: {
+    width: WIDTH - 55,
+    height: 45,
+    borderRadius: 25,
+    backgroundColor: '#432577',
+    justifyContent: 'center',
+    marginTop: 20
+  },
+  btnText: {
+    color: 'rgba(255,255,255,0.7)',
+    fontSize: 16,
+    fontFamily: 'custom-font',
+    textAlign: 'center'
+  },
+
   droidSafeArea: {
     marginTop:
       Platform.OS === 'android' ? StatusBar.currentHeight : RFValue(35),
   },
-  appTitle: {
-    flex: 0.4,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  appTitleText: {
-    color: '#332e2e',
-    textAlign: 'center',
-    fontSize: RFValue(40),
-    fontFamily: 'custom-font',
-  },
+
   buttonContainer: {
     flex: 0.3,
     justifyContent: 'center',
     alignItems: 'center',
   },
   button: {
-    width: RFValue(250),
-    height: RFValue(50),
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
+    marginTop: 50,
+
+    justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: RFValue(30),
-    backgroundColor: 'white',
   },
   googleIcon: {
     width: RFValue(30),
     height: RFValue(30),
     resizeMode: 'contain',
-  },
-  googleText: {
-    color: 'black',
-    fontSize: RFValue(20),
-    fontFamily: 'custom-font',
   },
 });

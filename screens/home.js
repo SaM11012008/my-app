@@ -16,7 +16,7 @@ import AppLoading from 'expo-app-loading';
 import StoryCard from "./storycard";
 
 let fonts = {
-    'custom-font': require('../assets/fonts/WaukeganLdoBold-ZVeK.ttf')
+    'custom-font': require('../assets/fonts/MakanHati-vmp94.ttf')
 }
 
 let stories = require("./stories.json")
@@ -38,9 +38,9 @@ export default class Home extends Component {
         await Font.loadAsync(fonts);
         this.setState({ fontsLoaded: true });
     }
-    
-    renderItem = ({ item: story }) => {
-        return <StoryCard story={story} />;
+
+    renderItem = ({ item: stories }) => {
+        return <StoryCard story={stories} navigation={this.props.navigation} />;
     };
 
     keyExtractor = (item, index) => index.toString()
@@ -52,12 +52,8 @@ export default class Home extends Component {
             return (
                 <View style={styles.container}>
                     <SafeAreaView style={styles.droidSafeArea} />
-                    <View style={styles.appTitle}>
-                        <View style={styles.appIcon}>
-                        </View>
-                        <View style={styles.appTitleTextContainer}>
-                            <Text style={styles.appTitleText}>Title</Text>
-                        </View>
+                    <View style={styles.appTitleTextContainer}>
+                        <Text style={styles.appTitleText}>Title</Text>
                     </View>
                     <View style={styles.cardContainer}>
                         <FlatList
@@ -77,31 +73,26 @@ export default class Home extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#91150c"
+        backgroundColor: "#392C2C",
+        justifyContent: 'center'
     },
     droidSafeArea: {
         marginTop: Platform.OS === "android" ? StatusBar.currentHeight : RFValue(5)
     },
-    appTitle: {
-        flex: 1,
-        flexDirection: 'row'
-    },
-    appIcon: {
-
-    },
     appTitleTextContainer: {
-        flex: 0.7,
         justifyContent: "center",
-        alignContent: 'center'
+        alignContent: 'center',
     },
     appTitleText: {
-        color: "white",
+        color: "#E8C360",
         fontSize: RFValue(38),
         fontFamily: 'custom-font',
-        marginLeft:150,
-        paddingBottom:200
+        marginLeft: 150,
+        marginTop: 10
     },
     cardContainer: {
-        flex: 0.85
+        flex: 15,
+        width: "100%",
+        justifyContent: 'center'
     }
 });

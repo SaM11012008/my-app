@@ -31,7 +31,7 @@ const BottomTabNavigator = () => {
                 }
             })}
             activeColor={"#cce0ff"}
-            inactiveColor={"#c7b27d"}
+            inactiveColor={"#F1F3CE"}
         >
             <Tab.Screen name="HomeScreen" component={Home} />
             <Tab.Screen name="Settings" component={Settings} />
@@ -41,7 +41,7 @@ const BottomTabNavigator = () => {
 
 const styles = StyleSheet.create({
     bottomTabStyle: {
-        backgroundColor: "#4f3432",
+        backgroundColor: "#392C2C",
         height: "8%",
         overflow: "hidden",
         position: "absolute"

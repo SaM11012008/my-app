@@ -14,17 +14,22 @@ import {
 import { RFValue } from 'react-native-responsive-fontsize';
 import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
+import firebase from 'firebase';
+import Logout from './logout';
 
 let fonts = {
     'custom-font': require('../assets/fonts/WaukeganLdoBold-ZVeK.ttf')
 }
+
+let stories = require("./stories.json")
 
 export default class StoryCard extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            fontsLoaded: true
+            fontsLoaded: true,
+            story_data: this.props.stories
         }
     }
 
@@ -38,30 +43,36 @@ export default class StoryCard extends Component {
     }
 
     render() {
+        let story = this.state.story_data
         if (!this.state.fontsLoaded) {
             return <AppLoading />
         } else {
+            let images = {
+                hanumanImg: require("../assets/bajrangbali.png")
+            }
             return (
-                <View style={styles.container}>
+                <TouchableOpacity style={styles.container}
+                    onPress={() =>
+                        this.props.navigation.navigate("Story", {
+                            story: story
+                        })
+                    }
+                >
                     <View style={styles.cardContainer}>
                         <Image
                             source={require("../assets/bajrangbali.png")}
                             style={styles.storyImage}
-                        ></Image>
-
+                        />
                         <View style={styles.titleContainer}>
                             <Text style={styles.storyTitleText}>
                                 {this.props.story.title}
-                            </Text>
-                            <Text style={styles.storyAuthorText}>
-                                {this.props.story.author}
                             </Text>
                             <Text style={styles.descriptionText}>
                                 {this.props.story.description}
                             </Text>
                         </View>
                     </View>
-                </View>
+                </TouchableOpacity>
             )
         }
     }
@@ -70,39 +81,41 @@ export default class StoryCard extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        justifyContent: 'space-evenly'
     },
     cardContainer: {
-        margin: RFValue(53),
-        backgroundColor: "#eb4034",
+        margin: RFValue(50),
+        width: "75%",
+        backgroundColor: "#C99356",
         borderRadius: RFValue(15),
     },
     storyImage: {
-        resizeMode: "contain",
-        width: "95%",
-        alignSelf: "center",
-        height: RFValue(250)
+        width: "75%",
+        height: RFValue(250),
+        alignSelf: 'center'
     },
     titleContainer: {
-        padding:100,
+        height: 300,
+        width: 350
     },
     storyTitleText: {
-        fontSize: RFValue(25),
+        fontSize: RFValue(23),
         fontFamily: "custom-font",
-        color: "white"
-    },
-    storyAuthorText: {
-        fontSize: RFValue(18),
-        fontFamily: "custom-font",
-        color: "white"
+        color: "#6D4840",
+        flexWrap: 'wrap',
+        justifyContent: 'center',
+        marginTop: 20,
+        marginLeft: 10,
+        marginRight: 10
     },
     descriptionText: {
         fontFamily: "custom-font",
-        fontSize: 13,
-        color: "white",
-        paddingTop: RFValue(10)
-    },
-    actionContainer: {
-        justifyContent: "center",
-        padding: RFValue(10)
+        fontSize: RFValue(19),
+        color: "#6D4840",
+        paddingTop: RFValue(10),
+        flexWrap: 'wrap',
+        marginTop: 30,
+        marginLeft: 15,
+        marginRight: 15
     },
 })

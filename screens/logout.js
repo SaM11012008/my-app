@@ -1,11 +1,14 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Dimensions } from "react-native";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
+import firebase from 'firebase';
 
 let fonts = {
   'custom-font': require('../assets/fonts/WaukeganLdoBold-ZVeK.ttf')
 }
+
+const { width: WIDTH } = Dimensions.get('window')
 
 export default class Logout extends Component {
 
@@ -31,8 +34,12 @@ export default class Logout extends Component {
       return <AppLoading />;
     } else {
       return (
-        <View style={styles.container}>
-          <Text style={styles.text}>Logout</Text>
+        <View>
+          <TouchableOpacity style={styles.logoutbtn} onPress={() => {
+            firebase.auth().signOut()
+          }}>
+            <Text style={styles.btnText}> Logout </Text>
+          </TouchableOpacity>
         </View>
       );
     }
@@ -40,12 +47,25 @@ export default class Logout extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    
-  },
   text: {
-    fontFamily:'custom-font',
-    fontSize:50,
-    color:'white'
-  }
+    fontFamily: 'custom-font',
+    fontSize: 50,
+    color: 'white'
+  },
+  logoutbtn: {
+    backgroundColor: '#E8C360',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: WIDTH - 55,
+    height: 45,
+    borderRadius: 25,
+    marginTop: 20,
+    marginLeft: 25,
+  },
+  btnText: {
+    color: '#392C2C',
+    fontSize: 23,
+    fontFamily: 'custom-font',
+    textAlign: 'center'
+  },
 });
