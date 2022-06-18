@@ -16,6 +16,7 @@ import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
 import firebase from 'firebase';
 import Logout from './logout';
+import Story from './story'
 
 let fonts = {
     'custom-font': require('../assets/fonts/WaukeganLdoBold-ZVeK.ttf')
@@ -48,7 +49,8 @@ export default class StoryCard extends Component {
             return <AppLoading />
         } else {
             let images = {
-                hanumanImg: require("../assets/bajrangbali.png")
+                hanumanImg: require("../assets/bajrangbali.png"),
+                samudraManthan: require("../assets/samudra-manthan.png")
             }
             return (
                 <TouchableOpacity style={styles.container}
@@ -86,7 +88,7 @@ const styles = StyleSheet.create({
     cardContainer: {
         margin: RFValue(50),
         width: "75%",
-        backgroundColor: "#C99356",
+        backgroundColor: "#FF7F50",
         borderRadius: RFValue(15),
     },
     storyImage: {

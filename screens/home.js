@@ -39,8 +39,8 @@ export default class Home extends Component {
         this.setState({ fontsLoaded: true });
     }
 
-    renderItem = ({ item: stories }) => {
-        return <StoryCard story={stories} navigation={this.props.navigation} />;
+    renderItem = ({ item: story }) => {
+        return <StoryCard story={story} navigation={this.props.navigation} />;
     };
 
     keyExtractor = (item, index) => index.toString()

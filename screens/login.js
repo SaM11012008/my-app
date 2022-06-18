@@ -106,7 +106,6 @@ export default class Login extends Component {
                   locale: result.additionalUserInfo.profile.locale,
                   first_name: result.additionalUserInfo.profile.given_name,
                   last_name: result.additionalUserInfo.profile.family_name,
-                  current_theme: 'dark',
                 })
                 .then(function (snapshot) { });
             }
@@ -168,7 +167,7 @@ export default class Login extends Component {
             <Text style={styles.logoText}> MY APP </Text>
           </View>
 
-          <View style={styles.inputContainer}>
+        {/*  <View style={styles.inputContainer}>
             <Ionicons
               name='person-outline'
               size={28}
@@ -314,8 +313,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   googleIcon: {
-    width: RFValue(30),
-    height: RFValue(30),
+    width: RFValue(70),
+    height: RFValue(70),
     resizeMode: 'contain',
+    alignSelf: 'center'
   },
 });

@@ -14,7 +14,9 @@ const StackNavigator = () => {
             }}
         >
             <Stack.Screen name="Home" component={TabNavigator} />
-            <Stack.Screen name="Story" component={Story} />
+            <Stack.Screen
+                name="Story"
+                component={Story} />
         </Stack.Navigator>
     );
 };
