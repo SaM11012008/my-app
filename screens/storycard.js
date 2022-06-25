@@ -19,7 +19,7 @@ import Logout from './logout';
 import Story from './story'
 
 let fonts = {
-    'custom-font': require('../assets/fonts/WaukeganLdoBold-ZVeK.ttf')
+    'custom-font': require('../assets/fonts/Grandstander-Regular.ttf')
 }
 
 let stories = require("./stories.json")
@@ -50,7 +50,8 @@ export default class StoryCard extends Component {
         } else {
             let images = {
                 hanumanImg: require("../assets/bajrangbali.png"),
-                samudraManthan: require("../assets/samudra-manthan.png")
+                samudraManthan: require("../assets/samudra-manthan.png"),
+                ramSquirrel: require("../assets/ram-squirrel.png"),
             }
             return (
                 <TouchableOpacity style={styles.container}
@@ -88,7 +89,7 @@ const styles = StyleSheet.create({
     cardContainer: {
         margin: RFValue(50),
         width: "75%",
-        backgroundColor: "#FF7F50",
+        backgroundColor: "#c2c1de",
         borderRadius: RFValue(15),
     },
     storyImage: {
@@ -103,7 +104,7 @@ const styles = StyleSheet.create({
     storyTitleText: {
         fontSize: RFValue(23),
         fontFamily: "custom-font",
-        color: "#6D4840",
+        color: "#0e0d40",
         flexWrap: 'wrap',
         justifyContent: 'center',
         marginTop: 20,
@@ -113,7 +114,7 @@ const styles = StyleSheet.create({
     descriptionText: {
         fontFamily: "custom-font",
         fontSize: RFValue(19),
-        color: "#6D4840",
+        color: "#0e0d40",
         paddingTop: RFValue(10),
         flexWrap: 'wrap',
         marginTop: 30,

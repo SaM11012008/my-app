@@ -41,7 +41,7 @@ const BottomTabNavigator = () => {
 
 const styles = StyleSheet.create({
     bottomTabStyle: {
-        backgroundColor: "#392C2C",
+        backgroundColor: "#0f0e2b",
         height: "8%",
         overflow: "hidden",
         position: "absolute"

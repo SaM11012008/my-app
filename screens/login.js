@@ -21,13 +21,11 @@ import AppLoading from 'expo-app-loading';
 import * as Font from 'expo-font';
 
 import Home from './home'
-
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
-import bgImg from '../assets/bg8.jpg'
+import bgImg from '../assets/bg3.jpg';
 
 let fonts = {
-  'custom-font': require('../assets/fonts/WaukeganLdoBold-ZVeK.ttf')
+  'custom-font': require('../assets/fonts/Grandstander-Regular.ttf')
 }
 
 const { width: WIDTH } = Dimensions.get('window')
@@ -167,7 +165,7 @@ export default class Login extends Component {
             <Text style={styles.logoText}> MY APP </Text>
           </View>
 
-        {/*  <View style={styles.inputContainer}>
+          {/*  <View style={styles.inputContainer}>
             <Ionicons
               name='person-outline'
               size={28}
@@ -221,11 +219,9 @@ export default class Login extends Component {
             <TouchableOpacity
               style={styles.button}
               onPress={() => this.signInWithGoogleAsync()}>
-
               <Image
                 source={require('../assets/google_icon.png')}
-                style={styles.googleIcon}></Image>
-
+                style={styles.googleIcon} />
             </TouchableOpacity>
           </View>
         </ImageBackground >
@@ -251,11 +247,11 @@ const styles = StyleSheet.create({
     height: 120
   },
   logoText: {
-    color: '#E8C360',
+    color: '#2b2a26',
     fontSize: 50,
     fontWeight: '500',
     fontFamily: 'custom-font',
-    marginTop: 10,
+    marginBottom: 400
   },
   inputContainer: {
     marginTop: 10
@@ -316,6 +312,6 @@ const styles = StyleSheet.create({
     width: RFValue(70),
     height: RFValue(70),
     resizeMode: 'contain',
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
 });

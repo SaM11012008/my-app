@@ -20,7 +20,7 @@ import firebase from 'firebase';
 const { width: WIDTH } = Dimensions.get('window')
 
 let fonts = {
-    'custom-font': require('../assets/fonts/MakanHati-vmp94.ttf')
+    'custom-font': require('../assets/fonts/Grandstander-Regular.ttf')
 }
 
 
@@ -70,7 +70,7 @@ export default class Settings extends Component {
                     <SafeAreaView style={styles.droidSafeArea} />
                     <View style={styles.appTitle}>
                         <View style={styles.appTitleTextContainer}>
-                            <Text style={styles.appTitleText}> My App </Text>
+                            <Text style={styles.appTitleText}> MY APP </Text>
                         </View>
                     </View>
                     <View style={styles.screenContainer}>
@@ -87,9 +87,6 @@ export default class Settings extends Component {
                     </View>
                     <View style={{ flex: 0.08 }} />
                     <View style={styles.screenContainer}>
-                        {/*}   <TouchableOpacity style={styles.logoutbtn} >
-                            <Text style={styles.btnText}> Logout </Text>
-            </TouchableOpacity>*/}
                         <Logout />
                     </View>
                 </View>
@@ -103,7 +100,7 @@ export default class Settings extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#392C2C"
+        backgroundColor: "#0f0e2b"
     },
     droidSafeArea: {
         marginTop: Platform.OS === "android" ? StatusBar.currentHeight : RFValue(35)
@@ -118,7 +115,7 @@ const styles = StyleSheet.create({
     },
     appTitleText: {
         color: "#E8C360",
-        fontSize: RFValue(28),
+        fontSize: RFValue(38),
         fontFamily: "custom-font"
     },
     screenContainer: {
@@ -134,27 +131,10 @@ const styles = StyleSheet.create({
         height: RFValue(140),
         borderRadius: RFValue(70)
     },
-
     nameText: {
         color: "#E8C360",
-        fontSize: RFValue(40),
+        fontSize: RFValue(30),
         fontFamily: "custom-font",
-        marginTop: RFValue(10)
-    },
-    logoutbtn: {
-        backgroundColor: '#E8C360',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: WIDTH - 55,
-        height: 45,
-        borderRadius: 25,
-        marginTop: 20,
-        marginLeft: 25,
-    },
-    btnText: {
-        color: '#392C2C',
-        fontSize: 23,
-        fontFamily: 'custom-font',
-        textAlign: 'center'
+        marginTop: RFValue(15)
     },
 });

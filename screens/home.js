@@ -16,7 +16,7 @@ import AppLoading from 'expo-app-loading';
 import StoryCard from "./storycard";
 
 let fonts = {
-    'custom-font': require('../assets/fonts/MakanHati-vmp94.ttf')
+    'custom-font': require('../assets/fonts/Grandstander-Regular.ttf')
 }
 
 let stories = require("./stories.json")
@@ -73,7 +73,7 @@ export default class Home extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#392C2C",
+        backgroundColor: "#0f0e2b",
         justifyContent: 'center'
     },
     droidSafeArea: {

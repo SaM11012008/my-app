@@ -5,7 +5,7 @@ import AppLoading from "expo-app-loading";
 import firebase from 'firebase';
 
 let fonts = {
-  'custom-font': require('../assets/fonts/WaukeganLdoBold-ZVeK.ttf')
+  'custom-font': require('../assets/fonts/Grandstander-Regular.ttf')
 }
 
 const { width: WIDTH } = Dimensions.get('window')
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   logoutbtn: {
-    backgroundColor: '#E8C360',
+    backgroundColor: '#c2c1de',
     justifyContent: 'center',
     alignItems: 'center',
     width: WIDTH - 55,
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     marginLeft: 25,
   },
   btnText: {
-    color: '#392C2C',
+    color: '#0e0d40',
     fontSize: 23,
     fontFamily: 'custom-font',
     textAlign: 'center'
